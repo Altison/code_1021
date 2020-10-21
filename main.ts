@@ -14,14 +14,10 @@ input.onButtonPressed(Button.B, function () {
         for (let x = 0; x <= 8; x++) {
             for (let I = 0; I <= 4; I++) {
                 for (let j = 0; j <= 4; j++) {
-                    if (value) {
-                        if (I + j == 8 - x) {
-                            led.plot(I, j)
-                        }
-                    } else {
-                        if (I + j == x) {
-                            led.unplot(I, j)
-                        }
+                    if (value && I + j == 8 - x) {
+                        led.plot(I, j)
+                    } else if (I + j == x) {
+                        led.unplot(I, j)
                     }
                 }
             }
