@@ -14,16 +14,18 @@ input.onButtonPressed(Button.B, function () {
         for (let x = 0; x <= 8; x++) {
             for (let I = 0; I <= 4; I++) {
                 for (let j = 0; j <= 4; j++) {
-                    if (value && I + j == 8 - x) {
-                        led.plot(I, j)
-                    } else if (I + j == x) {
-                        led.unplot(I, j)
+                    if (I + j == x) {
+                        if (value) {
+                            led.plot(4 - I, 4 - j)
+                        } else {
+                            led.unplot(I, j)
+                        }
                     }
                 }
             }
             basic.pause(100)
         }
-        basic.pause(1000)
         value = false
+        basic.pause(1000)
     }
 })
