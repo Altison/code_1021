@@ -1,34 +1,26 @@
-let value = false
 let k = 0
-let x = 0
-let y = 0
+let value = false
 input.onButtonPressed(Button.A, function () {
-    value = true
-    for (let I = 0; I <= 17; I++) {
-        if (I == 9) {
-            value = false
-            basic.pause(1000)
-        }
-        k = Math.min(17 - I, I)
-        x = Math.max(4 - k, 0)
-        y = Math.min(8 - k, 4)
-        for (let j = 0; j <= Math.min(8 - k, k); j++) {
-            if (value) {
-                led.plot(x, y)
+    for (let I = 0; I <= 18; I++) {
+        k = Math.min(18 - I, I)
+        for (let j = 0; j <= 4; j++) {
+            if (I == 9) {
+                basic.pause(1000)
+                break;
+            } else if (I < 9) {
+                led.plot(4 - j, 4 - (k - j))
             } else {
-                led.unplot(x, y)
+                led.unplot(4 - j, 4 - (k - j))
             }
-            x += 1
-            y += -1
         }
         basic.pause(100)
     }
 })
 input.onButtonPressed(Button.AB, function () {
-    for (let I = 0; I <= 4; I++) {
-        for (let j = 0; j <= 4; j++) {
-            if (I % 2 == j % 2) {
-                led.plot(I, j)
+    for (let I2 = 0; I2 <= 4; I2++) {
+        for (let l = 0; l <= 4; l++) {
+            if (I2 % 2 == l % 2) {
+                led.plot(I2, l)
             }
         }
     }
@@ -37,13 +29,13 @@ input.onButtonPressed(Button.B, function () {
     value = true
     for (let index = 0; index < 2; index++) {
         for (let x = 0; x <= 8; x++) {
-            for (let I = 0; I <= 4; I++) {
-                for (let j = 0; j <= 4; j++) {
-                    if (I + j == x) {
+            for (let I3 = 0; I3 <= 4; I3++) {
+                for (let m = 0; m <= 4; m++) {
+                    if (I3 + m == x) {
                         if (value) {
-                            led.plot(4 - I, 4 - j)
+                            led.plot(4 - I3, 4 - m)
                         } else {
-                            led.unplot(I, j)
+                            led.unplot(I3, m)
                         }
                     }
                 }
